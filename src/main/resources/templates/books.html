@@ -30,7 +30,7 @@
                 </form>
             </li>
         </ul>
-        
+    <div sec:authorize="hasAnyAuthority('ROLE_ADMIN,ROLE_USER')">       
         <h2> Add new Book </h2>
         <form th:action="@{/books}" th:method="POST">
                 <span>Book name</span><br/>
@@ -53,6 +53,6 @@
                 <br/>
            <input type="submit" value="Add new Book"/>     
         </form>
-
+        </div>
     </body>
 </html>

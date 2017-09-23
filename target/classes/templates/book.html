@@ -61,8 +61,10 @@
                 <input type="submit" value="Add Genre and Author"></input>
             </div>   
         </form>
+        <div sec:authorize="hasAuthority('ROLE_ADMIN')">   
          <form th:action="@{/books/{id}(id=${book.id})}" th:method="DELETE"> 
                    <input type="submit" value="Delete Book"></input>
           </form>
+        </div>
     </body>
 </html>

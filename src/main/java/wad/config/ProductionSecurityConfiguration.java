@@ -15,8 +15,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
-@Profile("default")
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+@Profile("production")
+public class ProductionSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserDetailsService userDetailsService;
@@ -25,17 +25,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers(HttpMethod.GET).permitAll()
-                .antMatchers(HttpMethod.POST).hasAnyRole("USER,ADMIN")
-                .antMatchers(HttpMethod.DELETE).hasAnyRole("ADMIN")
-                .anyRequest().authenticated();         
-                 http.formLogin().permitAll().and()
+                .antMatchers(HttpMethod.POST).permitAll()
+                .antMatchers(HttpMethod.POST).permitAll()
+                .anyRequest().authenticated();
+        
+        
+        http.formLogin().permitAll().and()
                 .logout().permitAll();
     }
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("admin").password("admin").roles("ADMIN");
-         auth.inMemoryAuthentication().withUser("user").password("user").roles("USER");
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 
     @Bean

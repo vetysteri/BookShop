@@ -5,10 +5,13 @@
  */
 package wad.service;
 
+import java.util.Arrays;
 import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import wad.domain.Book;
+import wad.domain.Account;
+import wad.repository.AccountRepository;
 
 
 /**
@@ -19,6 +22,11 @@ import wad.domain.Book;
 public class InitService {
     
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+    
+    @Autowired
+    private AccountRepository accountRepo;
      @Autowired
      private GenreService genreService;
      
@@ -60,6 +68,11 @@ public class InitService {
         bookService.save("Red Dot", 22.95,"Stephen King","Horror");
         bookService.save("Cell", 19.95,"Stephen King","Horror");
         
+    }
+    
+    @PostConstruct
+    public void init() {
+
     }
     
 }
