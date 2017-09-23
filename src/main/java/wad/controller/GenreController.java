@@ -5,6 +5,7 @@
  */
 package wad.controller;
 
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,14 +38,14 @@ public class GenreController {
          return "genres";
     }
     
-    
+    @Transactional
     @RequestMapping(method = RequestMethod.POST)
     public String save(@RequestParam String name){
         genreService.save(name);
         return "redirect:/genres";
     }
     
-    
+    @Transactional
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public String delete(@PathVariable (value = "id")Long id){
         genreService.deleteGenre(id);
@@ -54,7 +55,6 @@ public class GenreController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String getBooksByGenre(@PathVariable (value = "id") Long id, Model model){ 
         model.addAttribute("genre", genreService.getGenre(id));
-        System.out.println("ASd");
         return "genre";
     }
     

@@ -37,7 +37,6 @@ public class ShoppingCart implements Serializable {
 
     public void removeFromCart(Book book) {
         if (this.books.get(book) != null) {
-            System.out.println("Bookin value :" + this.books.get(book));
             long value = this.books.get(book);
             value--;
             if (value < 1) {
@@ -50,15 +49,14 @@ public class ShoppingCart implements Serializable {
     }
 
     public double getPrice() {
-        double summa = 0;
+        double price = 0;
         for (Book book : books.keySet()) {
-            summa += book.getPrice() * books.get(book);
+            price += book.getPrice() * books.get(book);
         }
-        return summa;
+        return price;
     }
 
     public void clearCart() {
-        System.out.println("Clear kutsuttu");
         this.books.clear();
 
     }

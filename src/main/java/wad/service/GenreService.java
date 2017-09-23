@@ -20,71 +20,72 @@ import wad.repository.GenreRepository;
  */
 @Service
 public class GenreService {
-    
+
     @Autowired
     private GenreRepository genreRepo;
-    
+
     @Autowired
     private BookRepository bookRepo;
-    
+
     @Autowired
     private BookService bookService;
-           
-    
-    public List <Genre> getGenres(){
+
+    public List<Genre> getGenres() {
         return genreRepo.findAll();
     }
-    
-    public void save (String name){
+
+    @Transactional
+    public void save(String name) {
         Genre genre = new Genre();
         genre.setName(name);
         genreRepo.save(genre);
     }
-    
-    public Genre getGenre(String name){
+
+    public Genre getGenre(String name) {
         return genreRepo.findByName(name);
     }
-    
-    public Genre getGenre(Long id){
+
+    public Genre getGenre(Long id) {
         return genreRepo.findOne(id);
     }
-    
-    public void delete(Long id){
-       genreRepo.delete(id);    
-    }
-    
+
     @Transactional
-    public void deleteGenre(Long id){
+    public void delete(Long id) {
+        genreRepo.delete(id);
+    }
+
+    @Transactional
+    public void deleteGenre(Long id) {
         Genre genre = getGenre(id);
-        if (genre.getBooks() != null){
-            for (Book book : genre.getBooks()){
-             book.setGenre(null);
+        if (genre.getBooks() != null) {
+            for (Book book : genre.getBooks()) {
+                book.setGenre(null);
             }
         }
         delete(id);
     }
-    
+
     @Transactional
-    public void addGenreToBook(Long bookId, String genreName){
+    public void addGenreToBook(Long bookId, String genreName) {
         Book book = bookService.getBook(bookId);
         Genre genre = getGenre(genreName);
         book.setGenre(genre);
     }
-    
+
     @Transactional
-    public void addGenreToBook(Long bookId, Long genreId){
+    public void addGenreToBook(Long bookId, Long genreId) {
         Book book = bookService.getBook(bookId);
         Genre genre = getGenre(genreId);
         book.setGenre(genre);
         genre.getBooks().add(book);
     }
-    
+
     @Transactional
-    public void addGenreToBook(String bookName, String genreName){
+    public void addGenreToBook(String bookName, String genreName) {
         Book book = bookService.getBook(bookName);
         Genre genre = getGenre(genreName);
         book.setGenre(genre);
         genre.getBooks().add(book);
     }
-    
+
 }

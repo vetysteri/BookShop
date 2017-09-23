@@ -3,7 +3,6 @@ wad\controller\CartController.class
 wad\OnlyForTheSelectedApplication.class
 wad\domain\Genre.class
 wad\controller\BookController.class
-wad\domain\OrderBook.class
 wad\controller\OrderController.class
 wad\repository\GenreRepository.class
 wad\service\InitService.class
