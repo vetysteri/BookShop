@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Meeting Cartman</title>
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+        <header th:replace="fragments/header :: header">
+            <p>header with links etc</p>
+        </header>
+        <h2>Available Genres</h2>
+            <ul>
+            
+                <li th:each="genre : ${genres}">
+                    <a th:href="@{/genres/{genreId} (genreId=${genre.id})}"><h4 th:text="${genre.name}">Genre</h4> </a>
+                    <form th:action="@{/genres/{id}(id=${genre.id})}" th:method="DELETE">
+                        <input type="submit" value="Delete Genre"></input>
+                    </form>
+                </li>
+            </ul>
+        <br/>
+        
+        <h2>Add a new Genre</h2>
+        <form th:action="@{/genres}" th:method="POST">
+            <span>Name</span><br/>
+            <input type="text" name="name" id="name"></input>   
+            <input type="submit" value="Add Genre"></input>
+        </form>
+        
+    </body>
+</html>

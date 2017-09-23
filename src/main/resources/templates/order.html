@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Meeting Cartman</title>
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+        <header th:replace="fragments/header :: header">
+            <p>header with links etc</p>
+        </header>
+        <h2>Thanks for Ordering!</h2>
+        <ul>
+            <li th:each="order : ${order}">
+                <h3> Name: <span th:text="${order.name}"></span></h3>
+                <h3> Address: <span th:text="${order.address}"></span></h3>
+                <h3> City: <span th:text="${order.city}"></span></h3>
+                <h3> Postnumber: <span th:text="${order.postNumber}"></span></h3>
+                <h3>Total of <span th:text="${order.bookCount}"></span> books with price: <span th:text="${order.totalPrice}"></span> €</h3>
+            </li>
+        </ul>
+    </body>
+</html>

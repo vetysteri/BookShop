@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Meeting Cartman</title>
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+        <header th:replace="fragments/header :: header">
+            <p>header with links etc</p>
+        </header>
+        <form th:action="@{/books/{id}(id=${book.id})}" th:method="POST"> 
+            <h2>Name:<span th:text="${book.name}">Book</span></h2>
+                <div th:if="${!book.authors.isEmpty()}">
+                    <ul>
+                        <li th:each="author : ${book.authors}">
+                            <h3>Author: <span th:text="${author.name}"></span></h3>
+                        </li>
+                    </ul>
+                </div>
+
+                <div th:if="${book.authors.isEmpty() and book.genre != null}">
+                    <h2> Add author to this book </h2>   
+                    <select name="authorId">
+                        <option th:each="author : ${authors}" th:value="${author.id}" th:text="${author.name}">
+                            Author   
+                        </option>                 
+                    </select>
+                    <input type="submit" value="Add Author"></input>
+                </div>
+
+                <div th:if="${book.genre != null}">   
+                    <h3>Genre:   <span th:text="${book.genre.name}">genre</span></h3>
+                </div>
+
+                <div th:if="${book.genre == null and !book.authors.isEmpty()}">   
+                    <h2> Add genre to this book </h2>
+                    <select name="genreId">                   
+                        <option th:each="genre : ${genres}" th:value="${genre.id}" th:text="${genre.name}">     
+                            Genre
+                        </option>    
+                    </select>  
+                    <input type="submit" value="Add Genre"></input>
+                </div>
+            
+            <div th:if="${book.authors.isEmpty() and book.genre == null}">
+                <h2> Add genre and Author to this Book</h2>
+                <span>Genre:</span>
+                <select name="genreId">                   
+                    <option th:each="genre : ${genres}" th:value="${genre.id}" th:text="${genre.name}">     
+                        Genre
+                    </option>    
+                </select>  
+                <br/>
+                <span>Author:</span>
+                <select name="authorId">
+                    <option th:each="author : ${authors}" th:value="${author.id}" th:text="${author.name}">
+                        Author   
+                    </option>                 
+                </select>
+                <br/>
+                <input type="submit" value="Add Genre and Author"></input>
+            </div>   
+        </form>
+         <form th:action="@{/books/{id}(id=${book.id})}" th:method="DELETE"> 
+                   <input type="submit" value="Delete Book"></input>
+          </form>
+    </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Meeting Cartman</title>
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+        
+        <header th:replace="fragments/header :: header">
+            <p>header with links etc</p>
+        </header>
+        <h2>Order Books</h2>
+     
+        <ul>
+            <li th:each="entry : ${books}">
+                <span th:text="${entry.key.name}">item name</span><span> :</span>  <span th:text= "${entry.value}">value</span>
+                <form th:action="@{/cart/books/{id}(id=${entry.key.id})}" th:method="DELETE"><input type="submit" value="Remove 1"/></form>
+                <form th:action="@{/cart/books/{id}(id=${entry.key.id})}" th:method="POST"><input type="submit" value="Add 1"/></form>
+            </li>
+        </ul>
+       <p><strong>Total <span th:text="${sum}">999</span> €</strong></p>
+       
+    <div th:if="${sum > 0}">
+               </div>
+       <h2>Order address</h2>   
+            <form th:action="@{/orders}" th:method="POST">
+                <p>Name: <input type="text" name="name" id="name"/></p>
+                <p>Address: <input type="text" name="address" id="address"/></p>
+                <p>Postnumber: <input type="text" name="postNumber" id="postNumber"/></p>
+                <p>City: <input type="text" name="city" id="city"/></p>
+                <input type="submit" value="Place order"></input>
+            </form>       
+    </body>
+</html>

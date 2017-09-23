@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Meeting Cartman</title>
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+        <header th:replace="fragments/header :: header">
+            <p>header with links etc</p>
+        </header>
+        <h3>Books with <span th:text="${author.name}"></span> as author</h3>
+        <ul>
+            <li th:each="book : ${author.books}">
+                <h3><span th:text="${book.name}"></span></h3>
+            </li>
+        </ul>
+    </body>
+</html>
