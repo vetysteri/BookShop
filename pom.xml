@@ -41,10 +41,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.thymeleaf.extras</groupId>
-            <artifactId>thymeleaf-extras-springsecurity4</artifactId>
-        </dependency> 
         
         <!-- Database -->
         <dependency>
@@ -74,8 +70,10 @@
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>htmlunit-driver</artifactId>
         </dependency>
-    </dependencies>
         
+        
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>

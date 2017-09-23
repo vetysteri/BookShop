@@ -56,7 +56,7 @@ public class InitService {
     authorService.save("Richard Branson");
     authorService.save("Stephen King");
     authorService.save("David Icke");
-        initBooks();
+     initBooks();
         
     }
 
@@ -69,10 +69,6 @@ public class InitService {
         bookService.save("Cell", 19.95,"Stephen King","Horror");
         
     }
-    
-    @PostConstruct
-    public void init() {
 
-    }
     
 }

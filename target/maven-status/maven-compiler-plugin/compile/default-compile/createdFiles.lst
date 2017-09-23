@@ -6,8 +6,10 @@ wad\controller\BookController.class
 wad\controller\OrderController.class
 wad\repository\GenreRepository.class
 wad\service\InitService.class
+wad\config\ProductionSecurityConfiguration.class
 wad\domain\Account.class
 wad\controller\DefaultController.class
+wad\domain\Image.class
 wad\repository\BookRepository.class
 wad\repository\AccountRepository.class
 wad\domain\Author.class
@@ -15,6 +17,7 @@ wad\domain\ShoppingCart.class
 wad\config\SecurityConfiguration.class
 wad\service\BookService.class
 wad\repository\AuthorRepository.class
+wad\repository\ImageRepository.class
 wad\controller\AuthorController.class
 wad\domain\Order.class
 wad\service\AuthorService.class
