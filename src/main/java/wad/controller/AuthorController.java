@@ -6,8 +6,6 @@
 package wad.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,41 +19,38 @@ import wad.service.AuthorService;
  *
  * @author veke
  */
-
 @Controller
 @RequestMapping("/authors")
-@EnableGlobalMethodSecurity(securedEnabled = true)
 public class AuthorController {
-    
+
     @Autowired
     private AuthorRepository authorRepo;
-    
+
     @Autowired
     private AuthorService authorService;
-    
+
     @RequestMapping(method = RequestMethod.GET)
-    public String home(Model model){
-        model.addAttribute("authors",authorService.getAuthors());
+    public String home(Model model) {
+        model.addAttribute("authors", authorService.getAuthors());
         return "authors";
     }
-    
-    
+
     @RequestMapping(method = RequestMethod.POST)
-    public String save(@RequestParam String name){
+    public String save(@RequestParam String name) {
         authorService.save(name);
         return "redirect:/authors";
     }
-    
+
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
-    public String deleteAuthor(@PathVariable (value="id") Long id){
+    public String deleteAuthor(@PathVariable(value = "id") Long id) {
         authorService.delete(id);
         return "redirect:/authors";
     }
-    
-    @RequestMapping(value = "{id}", method=RequestMethod.GET)
-    public String getBooksByAuthor(@PathVariable (value="id") Long authorId, Model model){
+
+    @RequestMapping(value = "{id}", method = RequestMethod.GET)
+    public String getBooksByAuthor(@PathVariable(value = "id") Long authorId, Model model) {
         model.addAttribute("author", authorService.getAuthor(authorId));
         return "author";
     }
-    
+
 }
