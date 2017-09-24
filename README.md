@@ -9,18 +9,21 @@ Post and Delete new books.
 Post and Delete new genres.
 Post and Delete authors.
 Assign genres and authors to movies.
+Fill shopping cart with books and "order" them. 
+Ordering at the moment being a simple form getting address, postnumber
+,email and the combined price of the books.
 
 User can :
 Post new books.
 Post new genres.
 Post new authors.
 Assign genres and authors to movies.
-
-Everyone can:
-View already posted books / authors / genres.
 Fill shopping cart with books and "order" them. 
 Ordering at the moment being a simple form getting address, postnumber
 ,email and the combined price of the books.
+
+Everyone can:
+View already posted books / authors / genres.
 
 Features still to be added : Adding an image to corresponding book,
 function level security tags, sign up form for making new accounts,
