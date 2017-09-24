@@ -1,4 +1,4 @@
-BookSHop
+Bookshop
 
 Software for posting books in to a Bookshop and assigning genres / authors to said movies.
 Tools used : Java, Spring, Thymeleaf, Maven, Heroku, PostreSQL, Travis, Maven.
@@ -21,6 +21,10 @@ View already posted books / authors / genres.
 Fill shopping cart with books and "order" them. 
 Ordering at the moment being a simple form getting address, postnumber
 ,email and the combined price of the books.
+
+Features still to be added : Adding an image to corresponding book,
+function level security tags, sign up form for making new accounts,
+more comprehensive tests.
 
 
 
