@@ -4,18 +4,20 @@ import java.util.List;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
 public class Account extends AbstractPersistable<Long> {
-
+    
+    
+    @NotBlank
+    @Length(min = 3, max = 30)
     private String username;
+    @NotBlank
+    @Length(min = 3, max = 30)
     private String password;
-    
-    private String address;
-    
-    private int postNumber;
-    
 
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> authorities;
@@ -42,22 +44,6 @@ public class Account extends AbstractPersistable<Long> {
 
     public void setAuthorities(List<String> authorities) {
         this.authorities = authorities;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public int getPostNumber() {
-        return postNumber;
-    }
-
-    public void setPostNumber(int postNumber) {
-        this.postNumber = postNumber;
     }
     
     

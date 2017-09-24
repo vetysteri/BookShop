@@ -15,6 +15,7 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.jpa.domain.AbstractPersistable;
@@ -33,7 +34,7 @@ public class Book extends AbstractPersistable<Long> implements Comparable<Book> 
     @NotBlank
     @Length(min = 2, max = 40)
     private String name;
-
+    @NotNull
     private Double price;
 
     @ManyToOne

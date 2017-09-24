@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
@@ -19,10 +21,18 @@ public class Order extends AbstractPersistable<Long> {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
-
+    
+    @NotBlank
+    @Length(min = 3, max = 30)
     private String name;
+    @NotBlank
+    @Length(min = 3, max = 30)
     private String address;
+    @NotBlank
+    @Length(min = 3, max = 30)
     private String postNumber;
+    @NotBlank
+    @Length(min = 3, max = 30)
     private String city;
     private Double totalPrice;
     private Long bookCount;

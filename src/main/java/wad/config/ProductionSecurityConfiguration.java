@@ -34,8 +34,9 @@ public class ProductionSecurityConfiguration extends WebSecurityConfigurerAdapte
                 .logout().permitAll();
     }
 
-    @Autowired
+ 
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+       // auth.inMemoryAuthentication().withUser("admin").password("admin").roles("ADMIN");
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 
