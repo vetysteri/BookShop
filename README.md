@@ -1,4 +1,3 @@
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/heroku/heroku-connect-quickstart)
 -Bookshop
 -
 -Software for posting books in to a Bookshop and assigning genres / authors to said movies.
@@ -29,4 +28,3 @@
 -Features still to be added : Adding an image to corresponding book,
 -function level security tags, sign up form for making new accounts,
 -more comprehensive tests.
-
